@@ -244,19 +244,19 @@ class Chest:
                 y = self.y + math.sin(angle) * distance
                 
 
-                if choise<=500:
+                if choise<=460:
                     return HealingPotion(
                         x,y
                     )
-                elif choise<=750:
+                elif choise<=730:
                     return MaxHPPotion(
                         x,y
                     )
-                elif choise<=850:
+                elif choise<=830:
                     return FireRatePotion(
                         x,y
                     )
-                elif choise<=900:
+                elif choise<=880:
                     return SpeedPotion(
                         x,y
                     )
@@ -1507,6 +1507,35 @@ class Game:
                     center=(WIDTH // 2, HEIGHT // 2 + 30)
                 )
             )
+         # ==========================================
+        # Player Status
+        # ==========================================
+            
+        font1 = pygame.font.Font(None, 30)
+
+        status_x = 10
+        status_y = 100
+
+        status_texts = [
+            f"HP: {self.player.hp}/{self.player.max_hp}",
+            f"Damage: {self.player.damage}",
+            f"Speed: {self.player.speed:.1f}",
+                f"Fire Cooldown: {self.player.fire_cooldown:.1f}",
+        ]
+
+        for i, text in enumerate(status_texts):
+
+            text_surface = font1.render(
+                text,
+                True,
+                (255, 255, 255)
+            )
+
+            screen.blit(
+                text_surface,
+                (status_x, status_y + i * 40)
+            )
+                
 
     # ==================================================
     # Shop
