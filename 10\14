@@ -244,23 +244,23 @@ class Chest:
                 y = self.y + math.sin(angle) * distance
                 
 
-                if choise<=460:
+                if choise<=460:#46%
                     return HealingPotion(
                         x,y
                     )
-                elif choise<=730:
+                elif choise<=750:#29%
                     return MaxHPPotion(
                         x,y
                     )
-                elif choise<=830:
+                elif choise<=850:#10%
                     return FireRatePotion(
                         x,y
                     )
-                elif choise<=880:
+                elif choise<=900:#5%
                     return SpeedPotion(
                         x,y
                     )
-                else:
+                else:#10%
                     return DamagePotion(
                         x,y
                     )
