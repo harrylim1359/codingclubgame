@@ -236,37 +236,43 @@ class Chest:
             if self.is_player_touching(player):
                 self.open = True
 
-                angle = random.uniform(0, math.tau)
-                distance = random.randint(25, 75)
-                choise = random.randint(0,1000)
+                dropNum=2
+                result=[]
 
-                x = self.x + math.cos(angle) * distance
-                y = self.y + math.sin(angle) * distance
+                for i in range(dropNum):
+
+                    angle = random.uniform(0, math.tau)
+                    distance = random.randint(25, 75)
+                    choise = random.randint(0,1000)
+
+                    x = self.x + math.cos(angle) * distance
+                    y = self.y + math.sin(angle) * distance
+                    
+
+                    if choise<=460:#46%
+                        result.append(HealingPotion(
+                            x,y
+                        ))
+                    elif choise<=750:#29%
+                        result.append(MaxHPPotion(
+                            x,y
+                        ))
+                    elif choise<=850:#10%
+                        result.append(FireRatePotion(
+                            x,y
+                        ))
+                    elif choise<=900:#5%
+                        result.append(SpeedPotion(
+                            x,y
+                        ))
+                    else:#10%
+                        result.append(DamagePotion(
+                            x,y
+                        ))
+                return result
                 
 
-                if choise<=460:#46%
-                    return HealingPotion(
-                        x,y
-                    )
-                elif choise<=750:#29%
-                    return MaxHPPotion(
-                        x,y
-                    )
-                elif choise<=850:#10%
-                    return FireRatePotion(
-                        x,y
-                    )
-                elif choise<=900:#5%
-                    return SpeedPotion(
-                        x,y
-                    )
-                else:#10%
-                    return DamagePotion(
-                        x,y
-                    )
-                
-
-        return None
+        return []
 
     def draw(self):
 
@@ -1355,8 +1361,11 @@ class Game:
 
             item = self.room.chest.update(self.player)
 
-            if item is not None:
-                self.items.append(item)
+            #if item is not None:
+            #    self.items.append(item)
+
+            for i in item:
+                self.items.append(i)
 
             if self.room.door.is_player_touching(self.player):
 
