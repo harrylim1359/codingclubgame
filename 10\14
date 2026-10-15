@@ -16,7 +16,7 @@ clock = pygame.time.Clock()
 font = pygame.font.SysFont(None, 30)
 big_font = pygame.font.SysFont(None, 60)
 
-base_path = os.path.dirname(os.path.abspath(__file__))
+base_path = "C:\\vscode\\"
 
 playerx=0
 playery=0
